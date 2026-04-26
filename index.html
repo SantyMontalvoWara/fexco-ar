@@ -638,28 +638,17 @@
         <div class="form-row">
           <div class="form-group">
             <label>Nombre <span class="form-required">*</span></label>
-            <input type="text" id="f-nombre" placeholder="Tu nombre completo" required>
+            <input type="text" id="f-nombre" placeholder="Tu nombre" required>
           </div>
           <div class="form-group">
-            <label>País <span class="form-required">*</span></label>
-            <input type="text" id="f-pais" placeholder="Bolivia, Argentina…" required>
+            <label>Apellidos <span class="form-required">*</span></label>
+            <input type="text" id="f-apellido" placeholder="Tus apellidos" required>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Email <span class="form-required">*</span></label>
-          <input type="email" id="f-email" placeholder="tu@correo.com" required>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>WhatsApp / Teléfono</label>
-            <input type="tel" id="f-tel" placeholder="+591 7…">
-          </div>
-          <div class="form-group">
-            <label>Empresa / Organización</label>
-            <input type="text" id="f-empresa" placeholder="Opcional">
-          </div>
+          <label>Número de WhatsApp <span class="form-required">*</span></label>
+          <input type="tel" id="f-tel" placeholder="+591 7…" required>
         </div>
 
         <div class="form-group">
@@ -667,20 +656,15 @@
           <select id="f-interes" required>
             <option value="" disabled selected>Selecciona una opción…</option>
             <option value="💰 Inversión">💰 Inversión — Quiero invertir en MONTALVO</option>
-            <option value="📈 Accionista">📈 Accionista — Interés en participación accionaria</option>
-            <option value="🤝 Patrocinador">🤝 Patrocinador / Sponsor — Asociar mi marca</option>
-            <option value="📰 Prensa / Media">📰 Prensa / Media — Cobertura o entrevista</option>
-            <option value="🔧 Colaboración Técnica">🔧 Colaboración Técnica — Ingeniería o I+D</option>
-            <option value="🌐 Distribuidor / Rep.">🌐 Distribuidor / Representante — Venta regional</option>
-            <option value="🏎 Pre-orden / Compra">🏎 Pre-orden / Compra — Quiero adquirir un MONTALVO</option>
-            <option value="🎓 Aporte Académico">🎓 Aporte Académico — Universidad o investigación</option>
+            <option value="📈 Accionista">📈 Accionista — Participación accionaria</option>
+            <option value="🤝 Patrocinador">🤝 Patrocinador / Sponsor</option>
+            <option value="📰 Prensa / Media">📰 Prensa / Media</option>
+            <option value="🔧 Colaboración Técnica">🔧 Colaboración Técnica</option>
+            <option value="🌐 Distribuidor / Rep.">🌐 Distribuidor / Representante</option>
+            <option value="🏎 Pre-orden / Compra">🏎 Pre-orden / Compra</option>
+            <option value="🎓 Aporte Académico">🎓 Aporte Académico</option>
             <option value="💡 Otro">💡 Otro</option>
           </select>
-        </div>
-
-        <div class="form-group">
-          <label>Mensaje</label>
-          <textarea id="f-mensaje" rows="4" placeholder="Cuéntanos más sobre tu propuesta o pregunta…"></textarea>
         </div>
 
         <button type="submit" class="modal-submit">Enviar por WhatsApp →</button>
@@ -772,27 +756,20 @@
   }
   function submitForm(e) {
     e.preventDefault();
-    const nombre  = document.getElementById('f-nombre').value.trim();
-    const email   = document.getElementById('f-email').value.trim();
-    const pais    = document.getElementById('f-pais').value.trim();
-    const tel     = document.getElementById('f-tel').value.trim();
-    const empresa = document.getElementById('f-empresa').value.trim();
-    const interes = document.getElementById('f-interes').value;
-    const mensaje = document.getElementById('f-mensaje').value.trim();
-    if (!nombre || !email || !pais || !interes) {
-      alert('Por favor completa los campos obligatorios (*).');
+    const nombre   = document.getElementById('f-nombre').value.trim();
+    const apellido = document.getElementById('f-apellido').value.trim();
+    const tel      = document.getElementById('f-tel').value.trim();
+    const interes  = document.getElementById('f-interes').value;
+    if (!nombre || !apellido || !tel || !interes) {
+      alert('Por favor completa todos los campos.');
       return;
     }
     const lines = [
       '🏎 *MONTALVO — Nueva Consulta*', '',
-      `👤 *Nombre:* ${nombre}`,
-      `📧 *Email:* ${email}`,
-      `🌍 *País:* ${pais}`,
-      tel     ? `📱 *Teléfono:* ${tel}`   : null,
-      empresa ? `🏢 *Empresa:* ${empresa}` : null,
+      `👤 *Nombre:* ${nombre} ${apellido}`,
+      `📱 *WhatsApp:* ${tel}`,
       `🎯 *Interés:* ${interes}`,
-      mensaje ? `💬 *Mensaje:* ${mensaje}` : null,
-    ].filter(Boolean).join('\n');
+    ].join('\n');
     window.open('https://wa.me/59160713875?text=' + encodeURIComponent(lines), '_blank');
     document.getElementById('modal-form-wrap').style.display = 'none';
     document.getElementById('modal-success').style.display = 'flex';
