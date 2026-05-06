@@ -1,378 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MONTALVO — El Primer Hypercar Eléctrico Inteligente de Bolivia</title>
-  <meta name="description" content="MONTALVO: El primer monoplaza eléctrico inteligente de Bolivia y Latinoamérica.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --gold: #C9A84C;
-      --gold-light: #F0C040;
-      --electric: #00C8FF;
-      --dark:  #050505;
-      --dark2: #0A0A0A;
-      --dark3: #111111;
-      --dark4: #1A1A1A;
-      --text:  #F0F0F0;
-      --muted: #666;
-      --border: rgba(201,168,76,0.2);
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--dark); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 3px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AETHERIUM Founders Club — Montalvo Design Engineering</title>
+<meta name="description" content="Acceso privado para los pioneros del primer hypercar eléctrico de Bolivia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --red:#E8002D;
+  --red-dim:rgba(232,0,45,0.15);
+  --white:#FFFFFF;
+  --off:#CCCCCC;
+  --dim:#666666;
+  --black:#000000;
+  --d1:#0A0A0A;
+  --d2:#111111;
+  --d3:#181818;
+  --border:rgba(255,255,255,0.07);
+  --border-r:rgba(232,0,45,0.35);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:2px;}
+::-webkit-scrollbar-track{background:#000;}
+::-webkit-scrollbar-thumb{background:var(--red);}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      padding: 22px 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: all .4s;
-    }
-    nav.scrolled {
-      background: rgba(5,5,5,.96);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 60px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { height: 36px; width: auto; }
-    .nav-logo-text { font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 700; color: var(--gold); letter-spacing: 5px; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { color: rgba(240,240,240,.65); text-decoration: none; font-family: 'Rajdhani', sans-serif; font-size: .75rem; letter-spacing: 3px; text-transform: uppercase; transition: color .3s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 9px 22px; font-family: 'Rajdhani', sans-serif; font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all .3s; }
-    .nav-cta:hover { background: var(--gold); color: var(--dark); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 26px; height: 2px; background: var(--gold); transition: all .3s; }
+/* ─── GLASSMORPHISM UTILS ─── */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
 
-    /* mobile drawer */
-    .mobile-menu {
-      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(5,5,5,.97); z-index: 800; flex-direction: column;
-      align-items: center; justify-content: center; gap: 40px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: var(--text); text-decoration: none; font-family: 'Orbitron', monospace; font-size: 1.4rem; letter-spacing: 4px; transition: color .3s; }
-    .mobile-menu a:hover { color: var(--gold); }
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 60px;
+  transition:all .3s;
+}
+nav.scrolled{
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:14px 60px;
+}
+.nav-logo{display:flex;align-items:center;gap:15px;text-decoration:none;}
+.nav-logo img{height:45px;width:auto;object-fit:contain; border-radius: 4px;}
+.nav-logo-text{font-family:'Orbitron',monospace;font-size:1.3rem;font-weight:900;color:var(--white);letter-spacing:6px;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:var(--dim);text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{
+  background:var(--red);color:var(--white);border:none;
+  padding:10px 24px;font-family:'Rajdhani',sans-serif;font-size:.7rem;
+  letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;
+  transition:all .2s;
+  box-shadow: 0 0 15px var(--red-dim);
+}
+.nav-cta:hover{background:#ff1a3a; box-shadow: 0 0 25px rgba(232,0,45,0.4);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:24px;height:2px;background:var(--white);transition:all .3s;}
 
-    /* ── HERO ── */
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 65% 50%, rgba(201,168,76,.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 15% 80%, rgba(0,200,255,.05) 0%, transparent 50%),
-        var(--dark);
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,.035) 1px, transparent 1px);
-      background-size: 65px 65px;
-      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-    }
-    .hero-content { position: relative; z-index: 2; padding: 160px 60px 120px; max-width: 680px; }
-    .eyebrow-line {
-      font-family: 'Rajdhani', sans-serif; font-size: .68rem; letter-spacing: 6px;
-      text-transform: uppercase; color: var(--electric); margin-bottom: 22px;
-      display: flex; align-items: center; gap: 14px;
-      opacity: 0; animation: fadeUp 1s ease .3s forwards;
-    }
-    .eyebrow-line::before { content: ''; width: 36px; height: 1px; background: var(--electric); }
-    .hero-title {
-      font-family: 'Orbitron', monospace; font-size: clamp(3.5rem,8vw,8.5rem);
-      font-weight: 900; line-height: .9; letter-spacing: -3px; color: #fff;
-      opacity: 0; animation: fadeUp 1s ease .5s forwards;
-    }
-    .hero-title .g { color: var(--gold); }
-    .hero-tag {
-      font-family: 'Rajdhani', sans-serif; font-size: clamp(.9rem,1.8vw,1.3rem);
-      letter-spacing: 9px; text-transform: uppercase; color: rgba(240,240,240,.4);
-      margin: 10px 0 36px;
-      opacity: 0; animation: fadeUp 1s ease .7s forwards;
-    }
-    .hero-desc {
-      font-size: .95rem; line-height: 1.85; color: rgba(240,240,240,.58);
-      max-width: 460px; margin-bottom: 48px; font-weight: 300;
-      opacity: 0; animation: fadeUp 1s ease .9s forwards;
-    }
-    .hero-btns { display: flex; gap: 18px; flex-wrap: wrap; opacity: 0; animation: fadeUp 1s ease 1.1s forwards; }
-    .btn-p {
-      background: var(--gold); color: var(--dark); border: none;
-      padding: 15px 38px; font-family: 'Rajdhani', sans-serif; font-size: .82rem;
-      letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
-      cursor: pointer; transition: all .3s; text-decoration: none; display: inline-block;
-    }
-    .btn-p:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 18px 36px rgba(201,168,76,.28); }
-    .btn-s {
-      background: transparent; color: var(--text); border: 1px solid rgba(240,240,240,.3);
-      padding: 15px 38px; font-family: 'Rajdhani', sans-serif; font-size: .82rem;
-      letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
-      transition: all .3s; text-decoration: none; display: inline-block;
-    }
-    .btn-s:hover { border-color: var(--gold); color: var(--gold); }
+/* mobile drawer */
+.mobile-menu{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);z-index:800;
+  flex-direction:column;align-items:center;justify-content:center;gap:44px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'Orbitron',monospace;font-size:1.3rem;letter-spacing:4px;transition:color .2s;}
+.mobile-menu a:hover{color:var(--red);}
 
-    /* hero 3D */
-    .hero-3d {
-      position: absolute; right: -4%; top: 50%; transform: translateY(-50%);
-      width: 52%; height: 78vh;
-      opacity: 0; animation: fadeIn 2.5s ease 1s forwards;
-    }
-    .hero-3d model-viewer { width: 100%; height: 100%; background: transparent; --poster-color: transparent; }
+/* ─── HERO ─── */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  overflow:hidden;background:var(--black);
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--red);z-index:3;
+}
+.hero-left{
+  position:relative;z-index:2;padding:0 60px;
+  width:55%;flex-shrink:0;
+  padding-top:100px;
+}
+.hero-eyebrow{
+  font-family:'Rajdhani',sans-serif;font-size:.65rem;letter-spacing:6px;
+  text-transform:uppercase;color:var(--red);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+  opacity:0;animation:up .8s ease .2s forwards;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red);}
+.hero-title{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(3.5rem,6.5vw,7.5rem);
+  font-weight:900;line-height:.9;
+  letter-spacing:-2px;color:var(--white);
+  opacity:0;animation:up .8s ease .35s forwards;
+}
+.hero-rule{
+  width:80px;height:3px;background:var(--red);
+  margin:28px 0;
+  opacity:0;animation:up .8s ease .5s forwards;
+}
+.hero-sub{
+  font-family:'Rajdhani',sans-serif;font-size:1.2rem;
+  letter-spacing:5px;text-transform:uppercase;
+  color:var(--red);margin-bottom:20px;font-weight: 700;
+  opacity:0;animation:up .8s ease .6s forwards;
+}
+.hero-desc{
+  font-size:1rem;line-height:1.9;color:rgba(255,255,255,0.7);
+  max-width:480px;font-weight:300;margin-bottom:44px;
+  opacity:0;animation:up .8s ease .7s forwards;
+}
+.hero-btns{
+  display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:up .8s ease .85s forwards;
+}
 
-    /* hero stats */
-    .hero-stats {
-      position: absolute; bottom: 36px; left: 60px; right: 60px;
-      display: flex; gap: 50px; border-top: 1px solid var(--border); padding-top: 26px;
-      opacity: 0; animation: fadeUp 1s ease 1.4s forwards;
-    }
-    .stat-val { font-family: 'Orbitron', monospace; font-size: 1.7rem; font-weight: 700; color: var(--gold); }
-    .stat-lbl { font-family: 'Rajdhani', sans-serif; font-size: .62rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+/* BOTONES GLOBALES */
+.btn-r{
+  background:var(--red);color:var(--white);border:none;
+  padding:14px 36px;font-family:'Rajdhani',sans-serif;font-size:.8rem;
+  letter-spacing:3px;text-transform:uppercase;font-weight:700;
+  cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;
+}
+.btn-r:hover{background:#ff1a3a;transform:translateY(-1px); box-shadow: 0 5px 15px rgba(232,0,45,0.3);}
+.btn-w{
+  background:transparent;color:var(--white);
+  border:1px solid rgba(255,255,255,0.25);
+  padding:14px 36px;font-family:'Rajdhani',sans-serif;font-size:.8rem;
+  letter-spacing:3px;text-transform:uppercase;cursor:pointer;
+  transition:all .2s;text-decoration:none;display:inline-block;
+}
+.btn-w:hover{border-color:var(--white); background: rgba(255,255,255,0.05);}
 
-    /* ── SECTIONS ── */
-    .sec { padding: 110px 60px; }
-    .sec-eye {
-      font-family: 'Rajdhani', sans-serif; font-size: .65rem; letter-spacing: 6px;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .sec-eye::after { content: ''; width: 50px; height: 1px; background: var(--gold); }
-    .sec-h { font-family: 'Orbitron', monospace; font-size: clamp(1.9rem,3.8vw,3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
-    .sec-p { font-size: .95rem; line-height: 1.85; color: rgba(240,240,240,.58); font-weight: 300; max-width: 580px; }
-    .gold { color: var(--gold); }
-    .blue { color: var(--electric); }
+/* 3D en hero */
+.hero-3d{
+  position:absolute;right:0;top:0;bottom:0;
+  width:58%;
+  opacity:0;animation:fadein 1.8s ease .4s forwards;
+}
+.hero-3d model-viewer{
+  width:100%;height:100%;
+  background:transparent;
+  --poster-color:transparent;
+}
 
-    /* reveal */
-    .rev { opacity: 0; transform: translateY(36px); transition: opacity .8s ease, transform .8s ease; }
-    .rev.on { opacity: 1; transform: translateY(0); }
+/* SECCIONES COMUNES */
+.sec{padding:110px 60px;}
+.sec-inner{max-width:1400px;margin:0 auto;}
+.sec-tag{
+  font-family:'Rajdhani',sans-serif;font-size:.7rem;letter-spacing:6px;
+  text-transform:uppercase;color:var(--red);margin-bottom:14px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:'Orbitron',monospace;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;line-height:1.05;margin-bottom:22px;}
+.sec-p{font-size:1rem;line-height:1.9;color:rgba(255,255,255,0.6);font-weight:300;max-width:650px;}
+.red{color:var(--red);}
 
-    /* ── ABOUT ── */
-    .about { background: var(--dark2); position: relative; overflow: hidden; }
-    .about::before {
-      content: 'MONTALVO'; position: absolute; right: -4%; top: 50%; transform: translateY(-50%);
-      font-family: 'Orbitron', monospace; font-size: clamp(5rem,13vw,17rem); font-weight: 900;
-      color: rgba(201,168,76,.035); white-space: nowrap; pointer-events: none;
-    }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 30px; }
-    .a-stat { background: var(--dark3); padding: 28px; border-top: 2px solid var(--gold); }
-    .a-stat-num { font-family: 'Orbitron', monospace; font-size: 1.9rem; font-weight: 700; color: var(--gold); }
-    .a-stat-lbl { font-family: 'Rajdhani', sans-serif; font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-    .features { display: flex; flex-direction: column; }
-    .feat { display: flex; align-items: flex-start; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(201,168,76,.08); }
-    .feat:last-child { border-bottom: none; }
-    .feat-icon { width: 38px; height: 38px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; color: var(--gold); }
-    .feat h4 { font-family: 'Rajdhani', sans-serif; font-size: .95rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-    .feat p { font-size: .82rem; line-height: 1.7; color: rgba(240,240,240,.5); font-weight: 300; }
+/* reveal */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s,transform .75s;}
+.rv.on{opacity:1;transform:translateY(0);}
 
-    /* ── 3D VIEWER ── */
-    .viewer-sec { background: var(--dark3); padding: 0; }
-    .viewer-head { padding: 80px 60px 30px; text-align: center; }
-    .model-wrap { width: 100%; height: 68vh; position: relative; }
-    model-viewer { width: 100%; height: 100%; background: transparent; --poster-color: transparent; }
-    .view-btns { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
-    .view-btn { background: rgba(5,5,5,.85); border: 1px solid var(--border); color: var(--gold); padding: 9px 18px; font-family: 'Rajdhani', sans-serif; font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all .3s; backdrop-filter: blur(8px); }
-    .view-btn:hover { background: var(--gold); color: var(--dark); }
+/* ─── FOUNDERS CLUB ─── */
+.founders-sec {
+  background: url('./logo.jpg') center/cover no-repeat;
+  position: relative;
+}
+.founders-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(10,10,10,0.85) 100%);
+  z-index: 1;
+}
+.founders-content {
+  position: relative; z-index: 2;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+.tier-card {
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.tier-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(232,0,45,0.5);
+}
+.tier-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--border); transition: background 0.3s;
+}
+.tier-card:hover::before { background: var(--red); }
+.tier-name {
+  font-family: 'Orbitron', monospace; font-size: 1.4rem; color: var(--white); margin-bottom: 5px;
+}
+.tier-price {
+  font-family: 'Rajdhani', sans-serif; font-size: 2.5rem; color: var(--red); font-weight: 700; margin-bottom: 20px;
+}
+.tier-price span { font-size: 1rem; color: var(--dim); }
+.tier-desc {
+  font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 30px; flex-grow: 1;
+}
+.tier-features {
+  list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 12px;
+}
+.tier-features li {
+  font-size: 0.8rem; color: var(--off); display: flex; gap: 10px; align-items: flex-start;
+}
+.tier-features li::before {
+  content: '✓'; color: var(--red); font-weight: bold;
+}
+.tier-card.vip {
+  border-color: rgba(232,0,45,0.3);
+  background: linear-gradient(180deg, rgba(232,0,45,0.05) 0%, rgba(0,0,0,0) 100%);
+}
+.tier-card.vip::before { background: var(--red); }
 
-    /* ── VIDEOS ── */
-    .videos-sec { background: var(--dark); }
-    .videos-head { text-align: center; margin-bottom: 56px; }
-    .videos-head .sec-eye { justify-content: center; }
-    .vgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1400px; margin: 0 auto; }
-    .vcard { position: relative; overflow: hidden; background: var(--dark3); border: 1px solid var(--border); cursor: pointer; }
-    .vcard video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
-    .voverlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 55%); display: flex; align-items: flex-end; padding: 22px; pointer-events: none; }
-    .vlabel { font-family: 'Rajdhani', sans-serif; font-size: .68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
-    .vplay {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(255,255,255,.75);
-      background: rgba(0,0,0,.4); backdrop-filter: blur(4px);
-      display: flex; align-items: center; justify-content: center; transition: all .3s;
-    }
-    .vcard:hover .vplay { background: var(--gold); border-color: var(--gold); transform: translate(-50%,-50%) scale(1.1); }
-    .vplay svg { width: 18px; height: 18px; fill: white; margin-left: 3px; }
+/* ─── 3D VIEWER ─── */
+.viewer-sec{background:#000;padding:0;}
+.viewer-head{padding:80px 60px 0;text-align:center;}
+.viewer-head .sec-tag{justify-content:center;}
+.viewer-head .sec-tag::before{display:none;}
+.viewer-head .sec-tag::after{content:'';width:24px;height:1px;background:var(--red);}
+.model-wrap{width:100%;height:75vh;position:relative;}
+.model-wrap model-viewer{
+  width:100%;height:100%;
+  background:var(--black);
+  --poster-color:#000;
+}
+.view-btns{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;gap:5px;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); padding: 5px; border-radius: 4px; border: 1px solid var(--border);
+}
+.vbtn{
+  background:transparent;border:none;
+  color:var(--dim);padding:9px 18px;font-family:'Rajdhani',sans-serif;
+  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s; border-radius: 2px;
+}
+.vbtn:hover,.vbtn.active{background:var(--red);color:var(--white);}
 
-    /* ── TECH ── */
-    .tech-sec { background: var(--dark2); }
-    .tgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; max-width: 1400px; margin-left: auto; margin-right: auto; }
-    .tcard { background: var(--dark3); padding: 44px 36px; position: relative; overflow: hidden; transition: all .35s; }
-    .tcard:hover { background: var(--dark4); transform: translateY(-3px); }
-    .tcard::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform .35s; }
-    .tcard:hover::after { transform: scaleX(1); }
-    .tnum { font-family: 'Orbitron', monospace; font-size: .58rem; letter-spacing: 3px; color: var(--muted); margin-bottom: 28px; }
-    .ticon { font-size: 1.8rem; margin-bottom: 18px; }
-    .ttitle { font-family: 'Rajdhani', sans-serif; font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
-    .tvalue { font-family: 'Orbitron', monospace; font-size: 1.6rem; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
-    .tdesc { font-size: .82rem; line-height: 1.7; color: rgba(240,240,240,.48); font-weight: 300; }
+/* ─── VIDEOS ─── */
+.videos-sec{background:var(--d1);}
+.videos-head{margin-bottom:48px;}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1400px;margin:0 auto;}
+.vcard{position:relative;overflow:hidden;cursor:pointer; border: 1px solid var(--border); border-radius: 4px;}
+.vcard video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;opacity:.6;transition:opacity .4s;}
+.vcard:hover video{opacity:1;}
+.vbar{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:20px;
+  background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.vbar-label{font-family:'Rajdhani',sans-serif;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);}
+.vplay-btn{
+  width:50px;height:50px;border:1px solid var(--red);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(232,0,45,0.2);backdrop-filter: blur(4px);flex-shrink:0;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  transition:all .3s;
+}
+.vcard:hover .vplay-btn{background:var(--red); transform:translate(-50%,-50%) scale(1.1);}
+.vplay-btn svg{width:18px;height:18px;fill:white;margin-left:3px;}
 
-    /* ── AR ── */
-    .ar-sec { background: var(--dark3); text-align: center; position: relative; overflow: hidden; }
-    .ar-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,200,255,.055) 0%, transparent 70%); }
-    .ar-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-    .ar-ico { font-size: 3.5rem; display: block; margin-bottom: 28px; }
-    .ar-steps { display: flex; justify-content: center; gap: 36px; margin: 44px 0; flex-wrap: wrap; }
-    .ar-step { display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 150px; }
-    .ar-num { width: 42px; height: 42px; border: 1px solid var(--electric); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', monospace; font-size: .75rem; color: var(--electric); }
-    .ar-txt { font-family: 'Rajdhani', sans-serif; font-size: .78rem; letter-spacing: 1px; color: rgba(240,240,240,.55); text-align: center; }
-    .btn-ar {
-      border: 1px solid var(--electric); color: var(--electric); background: transparent;
-      padding: 15px 46px; font-family: 'Rajdhani', sans-serif; font-size: .82rem;
-      letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all .3s; position: relative; overflow: hidden;
-    }
-    .btn-ar::before { content: ''; position: absolute; inset: 0; background: var(--electric); transform: scaleX(0); transform-origin: left; transition: transform .3s; z-index: -1; }
-    .btn-ar:hover { color: var(--dark); }
-    .btn-ar:hover::before { transform: scaleX(1); }
+/* ─── FOOTER ─── */
+footer{background:var(--black);padding:60px 60px 20px;border-top:1px solid var(--border);}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;max-width:1400px;margin:0 auto 40px;}
+.fbrand img {height: 60px; margin-bottom: 15px; border-radius: 4px;}
+.fbrand p{font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.4);font-weight:300;max-width:320px;}
+.fcol h4{font-family:'Rajdhani',sans-serif;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:20px;}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.fcol ul a{text-decoration:none;font-size:.85rem;color:rgba(255,255,255,.4);transition:color .2s;font-weight:300;}
+.fcol ul a:hover{color:var(--white);}
+.fbot{max-width:1400px;margin:0 auto;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.fbot p,.fbot span{font-size:.7rem;color:rgba(255,255,255,.3);letter-spacing:2px;}
 
-    /* ── CONTACT ── */
-    .contact-sec { background: var(--dark2); padding: 110px 60px; text-align: center; }
-    .contact-sec .sec-eye { justify-content: center; }
+/* ─── MODAL ─── */
+.modal-backdrop{
+  display:none;position:fixed;inset:0;z-index:1100;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);
+}
+.modal-backdrop.open{display:flex;align-items:center;justify-content:center;}
+.modal-panel{
+  background:rgba(15,15,15,0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: 2px solid var(--red);
+  width:100%;max-width:500px;
+  border-radius: 8px;
+  transform:scale(0.95);opacity:0;transition:all .3s ease;
+}
+.modal-backdrop.open .modal-panel{transform:scale(1);opacity:1;}
+.modal-head{
+  padding:30px 30px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;align-items:flex-start;justify-content:space-between;
+}
+.modal-title{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:700;line-height:1.2; color: var(--white);}
+.modal-close{
+  background:transparent;border:none;color:var(--dim);
+  width:30px;height:30px;cursor:pointer;font-size:1.5rem;
+  transition:all .2s;
+}
+.modal-close:hover{color:var(--red); transform: rotate(90deg);}
+.modal-body{padding:25px 30px 35px;}
+.fg{margin-bottom:20px;}
+.fg label{display:block;font-family:'Rajdhani',sans-serif;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--off);margin-bottom:8px;}
+.fg input,.fg select{
+  width:100%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:14px; border-radius: 4px;
+  font-family:'Inter',sans-serif;font-size:.9rem;font-weight:300;
+  outline:none;transition:border-color .2s, background .2s;appearance:none;
+}
+.fg input:focus,.fg select:focus{border-color:var(--red); background: rgba(0,0,0,0.8);}
+.fg select option{background:var(--d2); color: white;}
+.modal-submit{
+  width:100%;background:var(--red);color:var(--white);border:none;
+  padding:16px;font-family:'Rajdhani',sans-serif;font-size:.9rem;
+  letter-spacing:3px;text-transform:uppercase;font-weight:700;
+  cursor:pointer;transition:all .2s;margin-top:10px; border-radius: 4px;
+}
+.modal-submit:hover{background:#ff1a3a; box-shadow: 0 5px 15px rgba(232,0,45,0.4);}
 
-    /* ── FOOTER ── */
-    footer { background: var(--dark2); padding: 56px 60px; border-top: 1px solid var(--border); }
-    .fgrid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; max-width: 1400px; margin: 0 auto 48px; }
-    .flogo { font-family: 'Orbitron', monospace; font-size: 1.6rem; font-weight: 700; color: var(--gold); letter-spacing: 6px; margin-bottom: 18px; }
-    .fbrand p { font-size: .88rem; line-height: 1.8; color: rgba(240,240,240,.45); font-weight: 300; max-width: 320px; }
-    .fcol h4 { font-family: 'Rajdhani', sans-serif; font-size: .63rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
-    .fcol ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .fcol ul a { text-decoration: none; font-size: .82rem; color: rgba(240,240,240,.45); transition: color .3s; font-weight: 300; }
-    .fcol ul a:hover { color: var(--gold); }
-    .fbot { max-width: 1400px; margin: 0 auto; padding-top: 26px; border-top: 1px solid rgba(201,168,76,.08); display: flex; justify-content: space-between; align-items: center; }
-    .fbot p, .fbot span { font-size: .72rem; color: rgba(240,240,240,.28); letter-spacing: 1px; }
+/* ─── ANIMATIONS (AQUÍ ESTÁ LA SOLUCIÓN DE LA PANTALLA NEGRA) ─── */
+@keyframes up{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadein{from{opacity:0;}to{opacity:1;}}
 
-    /* ── AR OVERLAY ── */
-    #ar-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: #000; }
-    #ar-close { position: fixed; top: 18px; right: 18px; z-index: 10000; background: rgba(0,0,0,.85); border: 1px solid var(--gold); color: var(--gold); width: 42px; height: 42px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp  { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      nav, nav.scrolled { padding-left: 30px; padding-right: 30px; }
-      .sec { padding: 90px 30px; }
-      .hero-3d { opacity: .25; width: 80%; right: -18%; }
-      .about-grid, .vgrid { grid-template-columns: 1fr; gap: 36px; }
-      .tgrid { grid-template-columns: 1fr 1fr; }
-      .fgrid { grid-template-columns: 1fr 1fr; }
-      .hero-stats { left: 30px; right: 30px; }
-      .viewer-head { padding: 60px 30px 20px; }
-    }
-    @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .hero-content { padding: 120px 28px 160px; }
-      .hero-3d { display: none; }
-      .hero-stats { left: 28px; right: 28px; gap: 24px; flex-wrap: wrap; }
-      .tgrid { grid-template-columns: 1fr; }
-      .fgrid { grid-template-columns: 1fr; gap: 36px; }
-      .fbot { flex-direction: column; gap: 8px; text-align: center; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
-      footer, .contact-sec { padding-left: 28px; padding-right: 28px; }
-    }
-
-    /* ── MODAL FORM ── */
-    .modal-backdrop {
-      display: none; position: fixed; inset: 0; z-index: 1100;
-      background: rgba(0,0,0,.75); backdrop-filter: blur(6px);
-    }
-    .modal-backdrop.open { display: flex; align-items: stretch; justify-content: flex-end; }
-    .modal-panel {
-      background: var(--dark2); border-left: 1px solid var(--border);
-      width: 100%; max-width: 480px;
-      display: flex; flex-direction: column;
-      transform: translateX(100%); transition: transform .4s cubic-bezier(.4,0,.2,1);
-      overflow-y: auto;
-    }
-    .modal-backdrop.open .modal-panel { transform: translateX(0); }
-    .modal-head {
-      padding: 36px 36px 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: flex-start; justify-content: space-between;
-    }
-    .modal-head-text { flex: 1; }
-    .modal-label {
-      font-family: 'Rajdhani', sans-serif; font-size: .65rem;
-      letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
-    }
-    .modal-title { font-family: 'Orbitron', monospace; font-size: 1.4rem; font-weight: 700; line-height: 1.2; }
-    .modal-close {
-      background: transparent; border: 1px solid var(--border); color: var(--muted);
-      width: 36px; height: 36px; cursor: pointer; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      transition: all .3s;
-    }
-    .modal-close:hover { border-color: var(--gold); color: var(--gold); }
-    .modal-body { padding: 28px 36px 36px; flex: 1; }
-    .modal-body p { font-size: .82rem; color: rgba(240,240,240,.5); line-height: 1.7; font-weight: 300; margin-bottom: 28px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label {
-      display: block; font-family: 'Rajdhani', sans-serif;
-      font-size: .65rem; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 7px;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%; background: var(--dark3); border: 1px solid rgba(201,168,76,.2);
-      color: var(--text); padding: 12px 14px;
-      font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 300;
-      outline: none; transition: border-color .3s; resize: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--gold); }
-    .form-group select { appearance: none; cursor: pointer; }
-    .form-group select option { background: var(--dark3); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-required { color: var(--electric); margin-left: 2px; }
-    .modal-submit {
-      width: 100%; background: var(--gold); color: var(--dark); border: none;
-      padding: 16px; font-family: 'Rajdhani', sans-serif; font-size: .88rem;
-      letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
-      cursor: pointer; transition: all .3s; margin-top: 8px;
-    }
-    .modal-submit:hover { background: var(--gold-light); }
-    .modal-success {
-      display: none; flex-direction: column; align-items: center;
-      justify-content: center; text-align: center; gap: 18px;
-      padding: 60px 36px; flex: 1;
-    }
-    .modal-success .s-ico { font-size: 3rem; }
-    .modal-success h3 { font-family: 'Orbitron', monospace; font-size: 1.2rem; color: var(--gold); }
-    .modal-success p { font-size: .88rem; color: rgba(240,240,240,.55); line-height: 1.7; font-weight: 300; }
-    @media (max-width: 520px) {
-      .modal-panel { max-width: 100%; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  nav,nav.scrolled{padding-left:30px;padding-right:30px;}
+  .sec{padding:90px 30px;}
+  .hero-left{width:100%;padding:120px 30px 60px; text-align: center;}
+  .hero-eyebrow, .sec-tag{justify-content: center;}
+  .hero-eyebrow::before, .sec-tag::before {display: none;}
+  .hero-btns {justify-content: center;}
+  .hero-3d{position:relative; width:100%; height: 50vh; opacity: 1;}
+  .pricing-grid {grid-template-columns: 1fr;}
+  .fgrid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero-title{font-size: 3.5rem; letter-spacing:0;}
+  .vgrid{grid-template-columns:1fr;}
+  .fgrid{grid-template-columns:1fr; gap: 40px;}
+  .fbot{flex-direction:column;gap:15px;text-align:center;}
+  .modal-panel {margin: 20px;}
+}
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <img src="./logo.jpg" alt="MONTALVO" onerror="this.style.display='none'">
+    <img src="./logo.jpg" alt="Montalvo Logo" onerror="this.style.display='none'">
     <span class="nav-logo-text">MONTALVO</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#auto3d">El Auto</a></li>
-    <li><a href="#tecnologia">Tecnología</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#ar">AR</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#inicio">Aetherium</a></li>
+    <li><a href="#auto3d">Ingeniería</a></li>
+    <li><a href="#founders">Founders Club</a></li>
+    <li><a href="#videos">Demostración</a></li>
   </ul>
-  <button class="nav-cta" onclick="openModal()">Solicitar Info</button>
+  <button class="nav-cta" onclick="openModal()">Acceso Privado</button>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -380,104 +393,100 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#nosotros"   onclick="toggleMenu()">Nosotros</a>
-  <a href="#auto3d"     onclick="toggleMenu()">El Auto</a>
-  <a href="#tecnologia" onclick="toggleMenu()">Tecnología</a>
-  <a href="#videos"     onclick="toggleMenu()">Videos</a>
-  <a href="#ar"         onclick="toggleMenu()">AR</a>
-  <a href="#contacto"   onclick="toggleMenu()">Contacto</a>
+  <img src="./logo.jpg" alt="Logo" style="height: 60px; border-radius: 4px;" onerror="this.style.display='none'">
+  <a href="#inicio" onclick="toggleMenu()">Aetherium</a>
+  <a href="#auto3d" onclick="toggleMenu()">Ingeniería</a>
+  <a href="#founders" onclick="toggleMenu()">Founders Club</a>
+  <a href="#videos" onclick="toggleMenu()">Demostración</a>
+  <button class="btn-r" onclick="toggleMenu(); openModal();">Acceso Privado</button>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="eyebrow-line">Bolivia · Latinoamérica · Mundo</div>
-    <h1 class="hero-title">MON<span class="g">TAL</span>VO</h1>
-    <div class="hero-tag">Electric Hyper Car Intelligence</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Proyecto Confidencial · FEXCO 2026</div>
+    <h1 class="hero-title">AETHE<br>RIUM</h1>
+    <div class="hero-rule"></div>
+    <div class="hero-sub">El Futuro es Autónomo. Y Nace en Bolivia.</div>
     <p class="hero-desc">
-      El primer monoplaza eléctrico inteligente de Bolivia y Latinoamérica.
-      Ingeniería extrema, inteligencia artificial y alma boliviana, forjados
-      para conquistar el mundo.
+      Nos vimos en la FEXCO. Entendiste la visión. 
+      Ahora abrimos las puertas de Montalvo Design Engineering 
+      para un círculo cerrado de pioneros.
     </p>
     <div class="hero-btns">
-      <a class="btn-p" href="#auto3d">Descubrir el Auto</a>
-      <a class="btn-s" href="#videos">Ver en Acción</a>
+      <a class="btn-r" href="#founders">Ver Membresías</a>
+      <a class="btn-w" href="#auto3d">Explorar Modelo</a>
     </div>
   </div>
 
-  <!-- 3D en hero -->
+  <!-- AUTO 3D (disable-zoom SOLUCIONA EL SCROLL) -->
   <div class="hero-3d">
     <model-viewer
       src="./auto.glb"
-      alt="MONTALVO Hypercar 3D"
-      auto-rotate rotation-per-second="18deg" auto-rotate-delay="0"
+      alt="AETHERIUM Electric Hypercar"
+      auto-rotate rotation-per-second="10deg"
       camera-controls interaction-prompt="none"
-      shadow-intensity="2" exposure="1.2" tone-mapping="commerce">
+      shadow-intensity="3" exposure="1.2"
+      camera-orbit="45deg 75deg 105%"
+      environment-image="neutral"
+      disable-zoom touch-action="pan-y"
+      style="background:transparent;--poster-color:transparent;">
     </model-viewer>
-  </div>
-
-  <div class="hero-stats">
-    <div><div class="stat-val">100%</div><div class="stat-lbl">Eléctrico</div></div>
-    <div><div class="stat-val">IA</div><div class="stat-lbl">Conducción Inteligente</div></div>
-    <div><div class="stat-val">#1</div><div class="stat-lbl">En Bolivia</div></div>
-    <div><div class="stat-val">LAT</div><div class="stat-lbl">Primer Monoplaza</div></div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about sec" id="nosotros">
-  <div class="about-grid">
-    <div class="rev">
-      <div class="sec-eye">Nuestra Visión</div>
-      <h2 class="sec-h">El Futuro Nace<br>en <span class="gold">Bolivia</span></h2>
-      <p class="sec-p" style="margin-bottom:24px;">
-        MONTALVO no es solo un automóvil — es una declaración. Bolivia y
-        Latinoamérica pueden crear tecnología de clase mundial. Un monoplaza
-        eléctrico de alto rendimiento, diseñado con IA y construido con alma boliviana.
-      </p>
-      <p class="sec-p">
-        Nuestro equipo de ingenieros reescribe las reglas del transporte de
-        alto rendimiento, demostrando que la innovación no tiene fronteras.
+<!-- FOUNDERS CLUB -->
+<section class="founders-sec sec" id="founders">
+  <div class="founders-overlay"></div>
+  <div class="sec-inner founders-content">
+    <div class="rv" style="text-align: center;">
+      <div class="sec-tag" style="justify-content: center; margin-bottom: 20px;">Acceso Limitado</div>
+      <h2 class="sec-h">AETHERIUM <span class="red">FOUNDERS CLUB</span></h2>
+      <p class="sec-p" style="margin: 0 auto;">
+        No vendemos un auto, estamos financiando el salto tecnológico de nuestra generación. 
+        Elige tu nivel de membresía y sé parte del desarrollo del prototipo final.
       </p>
     </div>
-    <div>
-      <div class="about-stats rev">
-        <div class="a-stat"><div class="a-stat-num">0→100</div><div class="a-stat-lbl">Aceleración extrema</div></div>
-        <div class="a-stat"><div class="a-stat-num">100%</div><div class="a-stat-lbl">Cero emisiones</div></div>
-        <div class="a-stat"><div class="a-stat-num">1er</div><div class="a-stat-lbl">Monoplaza en LatAm</div></div>
-        <div class="a-stat"><div class="a-stat-num">IA</div><div class="a-stat-lbl">Sistema autónomo</div></div>
+
+    <div class="pricing-grid rv">
+      <!-- TIER 1 -->
+      <div class="tier-card glass-panel">
+        <div class="tier-name">Backer Digital</div>
+        <div class="tier-price">150 <span>Bs.</span></div>
+        <p class="tier-desc">Para el entusiasta que quiere dejar su huella en la historia automotriz de Bolivia.</p>
+        <ul class="tier-features">
+          <li>Tu nombre grabado con láser en la placa interna de la carrocería externa.</li>
+          <li>Certificado digital de Early Backer.</li>
+          <li>Acceso a la lista VIP de WhatsApp para actualizaciones confidenciales.</li>
+        </ul>
+        <button class="btn-w" style="width: 100%; text-align: center;" onclick="openModal('Backer Digital - 150 Bs')">Seleccionar</button>
       </div>
-      <div class="features rev">
-        <div class="feat">
-          <div class="feat-icon">⚡</div>
-          <div>
-            <h4>Motor Eléctrico de Alta Potencia</h4>
-            <p>Torque instantáneo con gestión inteligente de energía en tiempo real y regeneración activa en frenado.</p>
-          </div>
-        </div>
-        <div class="feat">
-          <div class="feat-icon">🧠</div>
-          <div>
-            <h4>Inteligencia Artificial Integrada</h4>
-            <p>Sistemas autónomos que aprenden del conductor, anticipan condiciones y optimizan cada maniobra.</p>
-          </div>
-        </div>
-        <div class="feat">
-          <div class="feat-icon">🏎</div>
-          <div>
-            <h4>Monoplaza de Competición</h4>
-            <p>Carrocería aerodinámica para un solo piloto, inspirada en F1 y adaptada a las condiciones latinoamericanas.</p>
-          </div>
-        </div>
-        <div class="feat">
-          <div class="feat-icon">🇧🇴</div>
-          <div>
-            <h4>Orgullo Boliviano</h4>
-            <p>Concebido y construido en Bolivia. Un hito que posiciona a nuestro país como referente tecnológico global.</p>
-          </div>
-        </div>
+
+      <!-- TIER 2 -->
+      <div class="tier-card glass-panel vip">
+        <div class="tier-name" style="color: var(--red);">Insider Taller</div>
+        <div class="tier-price">1,500 <span>Bs.</span></div>
+        <p class="tier-desc">Para los que exigen ver la ingeniería de cerca. Acceso físico y técnico al proyecto.</p>
+        <ul class="tier-features">
+          <li>Todo lo del nivel Backer.</li>
+          <li>Invitación exclusiva al taller a puerta cerrada (ensamblaje de carrocería externa).</li>
+          <li>Acceso para sentarte en el monoplaza y probar comandos por voz en estático.</li>
+        </ul>
+        <button class="btn-r" style="width: 100%; text-align: center;" onclick="openModal('Insider Taller - 1,500 Bs')">Seleccionar Nivel</button>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="tier-card glass-panel">
+        <div class="tier-name">Visionary Partner</div>
+        <div class="tier-price">5,000 <span>Bs.</span></div>
+        <p class="tier-desc">Cupos extremadamente limitados. Para aliados estratégicos y visión corporativa.</p>
+        <ul class="tier-features">
+          <li>Todo lo del nivel Insider.</li>
+          <li>Prueba de manejo real a puerta cerrada (fase segura).</li>
+          <li>Cena estratégica anual con el CEO Santiago Montalvo.</li>
+          <li>Derecho preferente de compra ante futura apertura accionaria (Equity).</li>
+        </ul>
+        <button class="btn-w" style="width: 100%; text-align: center;" onclick="openModal('Visionary Partner - 5,000 Bs')">Aplicar Ahora</button>
       </div>
     </div>
   </div>
@@ -485,105 +494,42 @@
 
 <!-- 3D VIEWER -->
 <section class="viewer-sec" id="auto3d">
-  <div class="viewer-head rev">
-    <div class="sec-eye" style="justify-content:center;">Modelo 3D Interactivo</div>
-    <h2 class="sec-h" style="text-align:center;">Explora Cada <span class="gold">Detalle</span></h2>
-    <p class="sec-p" style="margin:14px auto 0;text-align:center;">
-      Gira, acerca y descubre la ingeniería detrás de cada línea del MONTALVO.
-    </p>
+  <div class="viewer-head rv">
+    <div class="sec-tag">Ingeniería Superior</div>
+    <h2 class="sec-h">Carrocería Externa <span class="red">AETHERIUM</span></h2>
   </div>
   <div class="model-wrap">
-    <model-viewer
-      id="mv-main"
-      src="./auto.glb"
-      alt="MONTALVO 3D Model"
-      camera-controls auto-rotate auto-rotate-delay="3000" rotation-per-second="12deg"
-      shadow-intensity="2.5" exposure="1.1" tone-mapping="commerce"
-      camera-orbit="40deg 72deg 200%" min-camera-orbit="auto auto 50%" max-camera-orbit="auto auto 400%"
-      interaction-prompt="auto">
+    <model-viewer id="mv-main" src="./auto.glb"
+      camera-controls auto-rotate shadow-intensity="2" exposure="1"
+      camera-orbit="30deg 80deg 110%"
+      disable-zoom touch-action="pan-y">
     </model-viewer>
-    <div class="view-btns">
-      <button class="view-btn" onclick="setView('40deg 72deg 200%')">Frontal</button>
-      <button class="view-btn" onclick="setView('90deg 88deg 200%')">Lateral</button>
-      <button class="view-btn" onclick="setView('0deg 5deg 200%')">Superior</button>
+    <div class="view-btns glass-panel">
+      <button class="vbtn active" onclick="setView('30deg 80deg 110%',this)">Frente</button>
+      <button class="vbtn" onclick="setView('90deg 85deg 110%',this)">Lado</button>
+      <button class="vbtn" onclick="setView('180deg 80deg 110%',this)">Atrás</button>
     </div>
   </div>
 </section>
 
 <!-- VIDEOS -->
 <section class="videos-sec sec" id="videos">
-  <div class="videos-head rev">
-    <div class="sec-eye">Demostración</div>
-    <h2 class="sec-h">El MONTALVO <span class="gold">en Acción</span></h2>
-    <p class="sec-p" style="margin:14px auto 0;text-align:center;max-width:500px;">
-      Observa el rendimiento y la tecnología del primer hypercar eléctrico de Bolivia.
-    </p>
-  </div>
-  <div class="vgrid rev">
-    <div class="vcard" onclick="toggleVid('v1',this)">
-      <video id="v1" src="./video1.mp4" loop playsinline webkit-playsinline preload="metadata"></video>
-      <div class="voverlay"><span class="vlabel">Demo 01 — Rendimiento</span></div>
-      <div class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+  <div class="sec-inner">
+    <div class="videos-head rv">
+      <div class="sec-tag">Pruebas FEXCO</div>
+      <h2 class="sec-h">Archivos de <span class="red">Control Autonómo</span></h2>
     </div>
-    <div class="vcard" onclick="toggleVid('v2',this)">
-      <video id="v2" src="./video2.mp4" loop playsinline webkit-playsinline preload="metadata"></video>
-      <div class="voverlay"><span class="vlabel">Demo 02 — Tecnología</span></div>
-      <div class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-    </div>
-  </div>
-</section>
-
-<!-- TECH -->
-<section class="tech-sec sec" id="tecnologia">
-  <div style="max-width:1400px;margin:0 auto;">
-    <div class="rev">
-      <div class="sec-eye">Especificaciones</div>
-      <h2 class="sec-h">Tecnología que <span class="gold">Redefine Límites</span></h2>
-    </div>
-    <div class="tgrid">
-      <div class="tcard rev"><div class="tnum">01</div><div class="ticon">⚡</div><div class="ttitle">Propulsión Eléctrica</div><div class="tvalue">0 CO₂</div><div class="tdesc">Motor eléctrico de alta eficiencia con regeneración en frenado. Torque instantáneo desde 0 RPM para una aceleración devastadora.</div></div>
-      <div class="tcard rev"><div class="tnum">02</div><div class="ticon">🧠</div><div class="ttitle">Sistema IA</div><div class="tvalue">Autónomo</div><div class="tdesc">Procesamiento en tiempo real con sensores, cámaras de alta resolución y algoritmos de aprendizaje profundo para asistencia y autonomía.</div></div>
-      <div class="tcard rev"><div class="tnum">03</div><div class="ticon">🏎</div><div class="ttitle">Monoplaza</div><div class="tvalue">1 Piloto</div><div class="tdesc">Diseño monocoque ultra ligero inspirado en F1, optimizado para máximo rendimiento aerodinámico y protección del conductor.</div></div>
-      <div class="tcard rev"><div class="tnum">04</div><div class="ticon">🔋</div><div class="ttitle">Batería Avanzada</div><div class="tvalue">Alta Densidad</div><div class="tdesc">Pack de última generación con gestión térmica activa, carga rápida y máxima autonomía sin comprometer el rendimiento.</div></div>
-      <div class="tcard rev"><div class="tnum">05</div><div class="ticon">📡</div><div class="ttitle">Conectividad</div><div class="tvalue">5G + IoT</div><div class="tdesc">Comunicación V2X, actualizaciones OTA y telemetría en tiempo real para monitoreo y diagnóstico remoto del vehículo.</div></div>
-      <div class="tcard rev"><div class="tnum">06</div><div class="ticon">🌎</div><div class="ttitle">Made in Bolivia</div><div class="tvalue">100% Local</div><div class="tdesc">Diseñado y construido en Bolivia. Posicionando a Latinoamérica en la vanguardia global del desarrollo de hypercars eléctricos.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- AR -->
-<section class="ar-sec sec" id="ar">
-  <div class="ar-inner rev">
-    <span class="ar-ico">📱</span>
-    <div class="sec-eye" style="justify-content:center;">Realidad Aumentada</div>
-    <h2 class="sec-h">Ve el MONTALVO en<br>tu <span class="blue">Mundo Real</span></h2>
-    <p class="sec-p" style="margin:14px auto;">
-      Con nuestra experiencia AR puedes ver el MONTALVO sobre cualquier
-      superficie usando solo tu teléfono. Apunta la cámara al marcador
-      y el auto cobrará vida.
-    </p>
-    <div class="ar-steps">
-      <div class="ar-step"><div class="ar-num">01</div><div class="ar-txt">Imprime o muestra el marcador AR en pantalla</div></div>
-      <div class="ar-step"><div class="ar-num">02</div><div class="ar-txt">Pulsa "Iniciar AR" y permite acceso a la cámara</div></div>
-      <div class="ar-step"><div class="ar-num">03</div><div class="ar-txt">Apunta al marcador y disfruta la experiencia</div></div>
-    </div>
-    <button class="btn-ar" onclick="launchAR()">⬡ Iniciar Experiencia AR</button>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-sec" id="contacto">
-  <div class="rev">
-    <div class="sec-eye">Contacto</div>
-    <h2 class="sec-h">Sé Parte de la <span class="gold">Revolución</span></h2>
-    <p class="sec-p" style="margin:14px auto 44px;">
-      Estamos seleccionando a los primeros propietarios y socios estratégicos
-      del primer hypercar eléctrico de Bolivia.
-    </p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a class="btn-p" href="https://wa.me/59160713875" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn-s" href="mailto:montalvoayavirisantiago@gmail.com">Enviar Email</a>
-      <a class="btn-s" href="https://www.instagram.com/montalvo.dess" target="_blank" rel="noopener">Instagram</a>
+    <div class="vgrid rv">
+      <div class="vcard glass-panel" onclick="toggleVid('v1',this)">
+        <video id="v1" src="./video1.mp4" loop playsinline webkit-playsinline></video>
+        <div class="vbar"><span class="vbar-label">Test 01 — Tracción y Respuesta</span></div>
+        <div class="vplay-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="vcard glass-panel" onclick="toggleVid('v2',this)">
+        <video id="v2" src="./video2.mp4" loop playsinline webkit-playsinline></video>
+        <div class="vbar"><span class="vbar-label">Test 02 — Comandos DESS por Voz</span></div>
+        <div class="vplay-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
     </div>
   </div>
 </section>
@@ -592,244 +538,121 @@
 <footer>
   <div class="fgrid">
     <div class="fbrand">
-      <div class="flogo">MONTALVO</div>
-      <p>El primer monoplaza eléctrico inteligente de Bolivia y Latinoamérica. Redefiniendo los límites de la ingeniería automotriz desde el corazón de Sudamérica.</p>
+      <img src="./logo.jpg" alt="Montalvo" onerror="this.style.display='none'">
+      <p>Montalvo Design Engineering Systems Superior. Diseñando el futuro de la movilidad autónoma desde Cochabamba, Bolivia.</p>
     </div>
     <div class="fcol">
       <h4>Navegación</h4>
       <ul>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#auto3d">El Auto</a></li>
-        <li><a href="#tecnologia">Tecnología</a></li>
-        <li><a href="#videos">Videos</a></li>
-        <li><a href="#ar">Realidad Aumentada</a></li>
+        <li><a href="#inicio">Aetherium</a></li>
+        <li><a href="#founders">Founders Club</a></li>
+        <li><a href="#auto3d">Ingeniería 3D</a></li>
       </ul>
     </div>
     <div class="fcol">
-      <h4>Contacto</h4>
+      <h4>Contacto Ejecutivo</h4>
       <ul>
-        <li><a href="mailto:montalvoayavirisantiago@gmail.com">montalvoayavirisantiago@gmail.com</a></li>
-        <li><a href="https://wa.me/59160713875" target="_blank" rel="noopener">WhatsApp: +591 60713875</a></li>
-        <li><a href="https://www.instagram.com/montalvo.dess" target="_blank" rel="noopener">Instagram: @montalvo.dess</a></li>
-        <li><a href="#">Bolivia · Latinoamérica</a></li>
+        <li><a href="https://wa.me/59160713875" target="_blank">WhatsApp Directorio</a></li>
+        <li><a href="mailto:montalvoayavirisantiago@gmail.com">Email Oficial</a></li>
+        <li><a href="https://www.instagram.com/montalvo.dess" target="_blank">Instagram</a></li>
       </ul>
     </div>
   </div>
   <div class="fbot">
-    <p>© 2025 MONTALVO Electric Hypercars. Todos los derechos reservados.</p>
-    <span>🇧🇴 HECHO EN BOLIVIA</span>
+    <p>© 2026 Montalvo Design Engineering SRL. Todos los derechos reservados.</p>
+    <span>ESTRICTAMENTE CONFIDENCIAL</span>
   </div>
 </footer>
 
-<!-- MODAL SOLICITAR INFO -->
-<div class="modal-backdrop" id="modal" onclick="handleBackdropClick(event)">
-  <div class="modal-panel">
+<!-- MODAL DIRECTO A WHATSAPP -->
+<div class="modal-backdrop" id="modal" onclick="handleBackdrop(event)">
+  <div class="modal-panel glass-panel">
     <div class="modal-head">
-      <div class="modal-head-text">
-        <div class="modal-label">Contacto Directo</div>
-        <h2 class="modal-title">Solicitar<br><span class="gold">Información</span></h2>
+      <div>
+        <div class="sec-tag" style="margin-bottom: 5px; font-size: 0.6rem;">Paso Final</div>
+        <h2 class="modal-title">Confirmar Acceso</h2>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body" id="modal-form-wrap">
-      <p>Cuéntanos quién eres y cómo podemos colaborar. Te responderemos directamente por WhatsApp.</p>
       <form id="info-form" onsubmit="submitForm(event)" novalidate>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombre <span class="form-required">*</span></label>
-            <input type="text" id="f-nombre" placeholder="Tu nombre" required>
-          </div>
-          <div class="form-group">
-            <label>Apellidos <span class="form-required">*</span></label>
-            <input type="text" id="f-apellido" placeholder="Tus apellidos" required>
-          </div>
+        <div class="fg">
+          <label>Nombre y Apellido</label>
+          <input type="text" id="f-nombre" placeholder="Ej: Carlos Mendoza" required>
         </div>
-
-        <div class="form-group">
-          <label>Número de WhatsApp <span class="form-required">*</span></label>
-          <input type="tel" id="f-tel" placeholder="+591 7…" required>
-        </div>
-
-        <div class="form-group">
-          <label>Tipo de Interés <span class="form-required">*</span></label>
-          <select id="f-interes" required>
-            <option value="" disabled selected>Selecciona una opción…</option>
-            <option value="💰 Inversión">💰 Inversión — Quiero invertir en MONTALVO</option>
-            <option value="📈 Accionista">📈 Accionista — Participación accionaria</option>
-            <option value="🤝 Patrocinador">🤝 Patrocinador / Sponsor</option>
-            <option value="📰 Prensa / Media">📰 Prensa / Media</option>
-            <option value="🔧 Colaboración Técnica">🔧 Colaboración Técnica</option>
-            <option value="🌐 Distribuidor / Rep.">🌐 Distribuidor / Representante</option>
-            <option value="🏎 Pre-orden / Compra">🏎 Pre-orden / Compra</option>
-            <option value="🎓 Aporte Académico">🎓 Aporte Académico</option>
-            <option value="💡 Otro">💡 Otro</option>
+        <div class="fg">
+          <label>Nivel de Membresía Elegido</label>
+          <select id="f-membresia" required>
+            <option value="" disabled selected>Selecciona tu paquete...</option>
+            <option value="Backer Digital (150 Bs)">Backer Digital — 150 Bs</option>
+            <option value="Insider Taller (1,500 Bs)">Insider Taller — 1,500 Bs</option>
+            <option value="Visionary Partner (5,000 Bs)">Visionary Partner — 5,000 Bs</option>
           </select>
         </div>
-
-        <button type="submit" class="modal-submit">Enviar por WhatsApp →</button>
+        <button type="submit" class="modal-submit">Confirmar por WhatsApp →</button>
+        <p style="font-size: 0.7rem; color: var(--dim); text-align: center; margin-top: 15px;">
+          Al hacer clic, se abrirá WhatsApp para coordinar el pago vía transferencia o QR directamente con Santiago Montalvo.
+        </p>
       </form>
-    </div>
-    <div class="modal-success" id="modal-success">
-      <div class="s-ico">🏎</div>
-      <h3>¡Mensaje Enviado!</h3>
-      <p>Tu consulta fue enviada a nuestro WhatsApp.<br>Te responderemos a la brevedad.</p>
-      <button class="btn-s" style="margin-top:10px;" onclick="closeModal()">Cerrar</button>
     </div>
   </div>
 </div>
 
-<!-- AR OVERLAY -->
-<div id="ar-overlay">
-  <button id="ar-close" onclick="closeAR()">✕</button>
-  <div id="ar-container" style="width:100%;height:100%;"></div>
-</div>
-
 <script>
-  /* ── nav scroll ── */
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', scrollY > 50);
-  });
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href'));
+  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+}));
 
-  /* ── smooth anchor ── */
-  function scrollTo(sel) { document.querySelector(sel)?.scrollIntoView({behavior:'smooth'}); }
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
-    });
-  });
+function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
 
-  /* ── mobile menu ── */
-  function toggleMenu() {
-    document.getElementById('mobile-menu').classList.toggle('open');
-  }
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('on'),i*70);io.unobserve(en.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  /* ── reveal on scroll ── */
-  const io = new IntersectionObserver(entries => {
-    entries.forEach((en, i) => {
-      if (en.isIntersecting) {
-        setTimeout(() => en.target.classList.add('on'), i * 80);
-        io.unobserve(en.target);
+function setView(orbit,btn){
+  document.getElementById('mv-main').cameraOrbit=orbit;
+  document.querySelectorAll('.vbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleVid(id,card){
+  const v=document.getElementById(id);
+  const btn=card.querySelector('.vplay-btn');
+  const path=btn.querySelector('path');
+  if(v.paused){v.play();path.setAttribute('d','M6 19h4V5H6v14zm8-14v14h4V5h-4z');btn.style.opacity='.5';}
+  else{v.pause();path.setAttribute('d','M8 5v14l11-7z');btn.style.opacity='1';}
+}
+
+function openModal(preselect = ''){
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  if(preselect) {
+    const select = document.getElementById('f-membresia');
+    for(let i=0; i<select.options.length; i++) {
+      if(select.options[i].value.includes(preselect.split(' - ')[0])) {
+        select.selectedIndex = i; break;
       }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.rev').forEach(el => io.observe(el));
-
-  /* ── 3D viewer camera ── */
-  function setView(orbit) {
-    document.getElementById('mv-main').cameraOrbit = orbit;
-  }
-
-  /* ── video toggle ── */
-  function toggleVid(id, card) {
-    const v = document.getElementById(id);
-    const btn = card.querySelector('.vplay');
-    const path = btn.querySelector('path');
-    if (v.paused) {
-      v.play();
-      path.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z');
-      btn.style.opacity = '.25';
-    } else {
-      v.pause();
-      path.setAttribute('d', 'M8 5v14l11-7z');
-      btn.style.opacity = '1';
     }
   }
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleBackdrop(e){if(e.target===document.getElementById('modal'))closeModal();}
 
-  /* ── MODAL ── */
-  function openModal() {
-    document.getElementById('modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      document.getElementById('modal-form-wrap').style.display = '';
-      document.getElementById('modal-success').style.display = 'none';
-      document.getElementById('info-form').reset();
-    }, 400);
-  }
-  function handleBackdropClick(e) {
-    if (e.target === document.getElementById('modal')) closeModal();
-  }
-  function submitForm(e) {
-    e.preventDefault();
-    const nombre   = document.getElementById('f-nombre').value.trim();
-    const apellido = document.getElementById('f-apellido').value.trim();
-    const tel      = document.getElementById('f-tel').value.trim();
-    const interes  = document.getElementById('f-interes').value;
-    if (!nombre || !apellido || !tel || !interes) {
-      alert('Por favor completa todos los campos.');
-      return;
-    }
-    const lines = [
-      '🏎 *MONTALVO — Nueva Consulta*', '',
-      `👤 *Nombre:* ${nombre} ${apellido}`,
-      `📱 *WhatsApp:* ${tel}`,
-      `🎯 *Interés:* ${interes}`,
-    ].join('\n');
-    window.open('https://wa.me/59160713875?text=' + encodeURIComponent(lines), '_blank');
-    document.getElementById('modal-form-wrap').style.display = 'none';
-    document.getElementById('modal-success').style.display = 'flex';
-  }
-
-  /* ── AR ── */
-  let arReady = false;
-  function launchAR() {
-    document.getElementById('ar-overlay').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    if (!arReady) { arReady = true; buildAR(); }
-  }
-  function closeAR() {
-    document.getElementById('ar-overlay').style.display = 'none';
-    document.body.style.overflow = '';
-    document.querySelectorAll('#ar-container video').forEach(v => v.pause());
-  }
-  function buildAR() {
-    const load = (src, cb) => {
-      const s = document.createElement('script');
-      s.src = src; s.onload = cb; document.head.appendChild(s);
-    };
-    load('https://aframe.io/releases/1.4.2/aframe.min.js', () => {
-      if (!AFRAME.components['controlador-video']) {
-        AFRAME.registerComponent('controlador-video', {
-          schema: { target: { type: 'string' } },
-          init() {
-            const v = document.querySelector(this.data.target);
-            this.el.addEventListener('targetFound', () => v?.play());
-            this.el.addEventListener('targetLost',  () => v?.pause());
-          }
-        });
-      }
-      load('https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js', () => {
-        document.getElementById('ar-container').innerHTML = `
-          <a-scene mindar-image="imageTargetSrc:./marcador.mind;"
-            color-space="sRGB"
-            renderer="colorManagement:true,physicallyCorrectLights"
-            vr-mode-ui="enabled:false"
-            device-orientation-permission-ui="enabled:false"
-            style="width:100%;height:100vh;">
-            <a-assets>
-              <a-asset-item id="ar-model" src="./auto.glb"></a-asset-item>
-              <video id="ar-v1" src="./video1.mp4" loop muted playsinline webkit-playsinline></video>
-              <video id="ar-v2" src="./video2.mp4" loop muted playsinline webkit-playsinline></video>
-            </a-assets>
-            <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
-            <a-entity mindar-image-target="targetIndex:0" controlador-video="target:#ar-v1">
-              <a-video src="#ar-v1" position="0 0 0" width="1" height="0.5" rotation="0 0 0"></a-video>
-            </a-entity>
-            <a-entity mindar-image-target="targetIndex:1" controlador-video="target:#ar-v2">
-              <a-video src="#ar-v2" position="0 0 0" width="1" height="0.5" rotation="0 0 0"></a-video>
-            </a-entity>
-            <a-entity mindar-image-target="targetIndex:2">
-              <a-gltf-model src="#ar-model" rotation="90 0 0" position="0 0 0" scale="0.5 0.5 0.5"></a-gltf-model>
-            </a-entity>
-          </a-scene>`;
-      });
-    });
-  }
+function submitForm(e){
+  e.preventDefault();
+  const n=document.getElementById('f-nombre').value.trim();
+  const m=document.getElementById('f-membresia').value;
+  if(!n||!m){alert('Por favor, completa tu nombre y elige un paquete.');return;}
+  const msg=`Hola Santiago, soy ${n}. Estuvimos en contacto por el proyecto Aetherium en la FEXCO.\n\nQuiero confirmar mi ingreso al Founders Club con la membresía: *${m}*.\n\nPor favor, envíame el QR para realizar la transferencia.`;
+  window.open('https://wa.me/59160713875?text='+encodeURIComponent(msg),'_blank');
+  closeModal();
+}
 </script>
 </body>
 </html>
